@@ -1,6 +1,12 @@
 # SmartInstall
 A wrapper for Cisco's smi_check.py file.
 
+**Requirements**
+1. Python 3.x
+2. Python 2.7
+
+The Cisco script is written in Python 2.7.
+
 The guys at [embedi.com](embedi.com) released a remote code exploit for Cisco's Smart Install protocol at GeekPWN 2017 Hong Kong. The Smart install protocol is used for automatic switch deployment and is enabled by default on many models including the 3850, 2960x, and 4500x. 
 
 This is a widespread vulnerability and it can lead to a DoS or a complete takeover of the switch. In this YouTube video Embedi [CVE-2018-0171 CISCO full control](https://www.youtube.com/watch?time_continue=6&v=CE7KNK6UJuk) demostrates gaining full control of the switch. In the reference section below I have a link to a Kapersky article on the vulnerability. They say that [Shodan.io](https://www.shodan.io/) lists 168,000 devices exposed on the public Internet. I have already been contacted by a customer that was notified they had one in the list. 
