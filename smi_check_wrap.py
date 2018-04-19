@@ -1,5 +1,5 @@
 '''
-References: 
+References:
 https://www.kaspersky.com/blog/cisco-apocalypse/21966/
 https://github.com/Cisco-Talos/smi_check
 https://embedi.com/blog/cisco-smart-install-remote-code-execution/
@@ -12,22 +12,24 @@ April 14, 2018
 Added code to remove duplicate IP addresses from iplist.txt
 Added code to sort the IP addresses and save to iplist.txt
 From a CAT core switch
-sh cdp ne det | i IP_ 
-Note the under score character. It means find IP plus a space. this 
+sh cdp ne det | i IP_
+Note the under score character. It means find IP plus a space. this
 removes IPV6 addresses and firmware versions that include IPservices etc.
 Save to iplist.txt
 
 '''
 import sys
-import subprocess
-import smi_check
 import os
 import struct
-from socket import inet_aton,inet_ntoa
+from socket import inet_aton
 vernum = '1.2'
+
+
 def version():
+
     """
-    This function prints the version of this program. It doesn't allow any argument.
+    This function prints the version of this program.
+    It doesn't allow any argument.
     """
     print("+----------------------------------------------------------------------+")
     print("| "+ sys.argv[0] + " Version "+ vernum +"                                               |")
@@ -40,7 +42,9 @@ def version():
     print("|         @rikosintie                                                  |")
     print("+----------------------------------------------------------------------+")
 
+
 version()
+
 
 def Remove(duplicate):
     final_list = []
@@ -49,15 +53,16 @@ def Remove(duplicate):
             final_list.append(num)
     return final_list
 
-#create a blank list to accept each line in the file
+
+# create a blank list to accept each line in the file
 data = []
 
 mydatafile = 'iplist.txt'
 try:
     f = open(mydatafile, 'r')
-except FileNotFoundError:
-            print(mydatafile,' does not exist')
-else:   
+except FileNotFoundError:    
+            print(mydatafile, ' does not exist')
+else:
 
     '''
     format of file
@@ -76,13 +81,12 @@ duplicate = data
 data = Remove(duplicate)
 data = sorted(data, key=lambda ip: struct.unpack("!L", inet_aton(ip))[0])
 
-with open(mydatafile,'w') as myfile:
+# write ip addresses to iplist.txt
+with open(mydatafile, 'w') as myfile:
     myfile.write('\n'.join(data))
 
+# run smi_check.py for each ip address
 for ip in data:
     i = "-i " + ip
     vuln = "./smi_check.py " + i
     os.system(vuln)
-#    process = subprocess.Popen(vuln.split(), stdout=subprocess.PIPE) 
-#    process = subprocess.Popen(vuln, stdout=subprocess.PIPE)
-#    output, error = process.communicate()
