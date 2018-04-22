@@ -133,3 +133,4 @@ SM-X-ES3 SKUs
 3. [What happened to the Internet: attack on Cisco switches](https://www.kaspersky.com/blog/cisco-apocalypse/21966/)
 4. [Critical flaw leaves thousands of Cisco Switches vulnerable to remote hacking](https://thehackernews.com/2018/04/cisco-switches-hacking.html)
 5. [Cisco PSIRT – Mitigating and Detecting Potential Abuse of Cisco Smart Install Feature](https://blogs.cisco.com/security/cisco-psirt-mitigating-and-detecting-potential-abuse-of-cisco-smart-install-feature)
+6. [Cisco-Talos smi_check](https://github.com/Cisco-Talos/smi_check)
