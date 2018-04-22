@@ -105,6 +105,26 @@ sh vstack conf
 ```
 To disable smart install run ```no vstack``` from global configuration.
 
+**Known Affected switches**
+```
+Catalyst 4500 Supervisor Engines
+Catalyst 3850 Series
+Catalyst 3750 Series
+Catalyst 3650 Series
+Catalyst 3560 Series
+Catalyst 2960 Series
+Catalyst 2975 Series
+IE 2000
+IE 3000
+IE 3010
+IE 4000
+IE 4010
+IE 5000
+SM-ES2 SKUs
+SM-ES3 SKUs
+NME-16ES-1G-P
+SM-X-ES3 SKUs
+```
 
 **References**
 
